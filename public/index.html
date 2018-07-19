@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -94,9 +93,7 @@
     #count3 span,
     #count4 span {
       width: 10px;
-
       font-size: 24px;
-
     }
 
     #shopping-cart {
@@ -129,9 +126,9 @@
     #hide {
       width: 270px;
       height: 190px;
-      background-color: white;
+    background-color:white;
       color: black;
-      margin-top: -260px;
+      margin-top: -245px;
       border-radius: 5px;
       text-align: center;
       font-size: 14px;
@@ -144,7 +141,7 @@
     #acc {
       width: 260px;
       height: 30px;
-      background-color: rgb(241, 164, 156);
+      background-image: url(../img/5.png);
       line-height: 30px;
       font-size: 18px;
       border-radius: 5px;
@@ -152,6 +149,7 @@
       text-align: center;
       margin-top: 8px;
       margin-top: -10px;
+      background-size: 100% 100%;
     }
 
     #tex {
@@ -236,7 +234,7 @@
             +name4.value +"&nbsp &nbsp 数量："+count4.value +"&nbsp件&nbsp &nbsp 小计："+ parseInt(count4.value)*parseInt(price4.value)+"元<br>"
             +"&nbsp &nbsp&nbsp &nbsp &nbsp&nbsp&nbsp &nbsp&nbsp&nbsp &nbsp&nbsp&nbsp &nbsp&nbsp&nbsp &nbsp&nbsp&nbsp &nbsp&nbsp&nbsp &nbsp&nbsp&nbsp &nbsp&nbsp&nbsp &nbsp&nbsp&nbsp &nbsp&nbsp总计："+Number(parseInt(count1.value)*parseInt(price1.value)+ parseInt(count2.value)*parseInt(price2.value)+ parseInt(count3.value)*parseInt(price3.value)+parseInt(count4.value)*parseInt(price4.value))+"元";
            x.innerHTML=z; //将文本放入div中
-          k.innerHTML="去结算";
+          // k.innerHTML="去结算";
        }
      },
      leave:function(){
@@ -248,11 +246,12 @@
            
            return (
               <div id="commodity"> 
+               
                    <img src="../img/1.jpg" width="200px" height="250px" />
                   <div id="text">
                     <div id="name1" value="一字肩长裙">女式拉夏贝尔碎花连衣裙女夏季雪纺裙高腰修身一字肩中长裙子</div>
                     <div id="price1" value="299"> ¥ 299 元&nbsp; &nbsp;<span> 7.5折</span></div>
-                    <div id="count1">数量：<span onClick={this.minus}> - </span> <input id="input1" type="text" value="0"/><sapn onClick={this.add}> + </sapn> </div>
+                    <div id="count1">数量：<span onClick={this.minus}> - </span><input id="input1" type="text" value="0" required/> <sapn onClick={this.add}> + </sapn> </div>
                     <div id="shopping-cart" onClick={this.add}>加入购物车</div>
                   </div>
                <div id="commodity"> 
@@ -260,7 +259,7 @@
                     <div id="text1">
                     <div id="name2" value="A字连衣裙">韩版印花拉夏贝尔7m2017秋装新款荷叶边收腰显瘦中长A字连衣裙女</div>
                     <div id="price2" value=" 299 "> ¥ 299 元&nbsp; &nbsp;<span> 7.5折</span></div>
-                     <div id="count2">数量：<span onClick={this.minus1}> - </span> <input id="input2" type="text" value="0"/><sapn onClick={this.add1}> + </sapn> </div>
+                     <div id="count2">数量：<span onClick={this.minus1}> - </span> <input id="input2" type="text" value="0" required/><sapn onClick={this.add1}> + </sapn> </div>
                     <div id="shopping-cart" onClick={this.add1}>加入购物车</div>
                   </div>
                </div>
@@ -269,7 +268,7 @@
                    <div id="text1">
                     <div id="name3" value="百搭连衣裙">2018夏装新款丝棉印花百搭显瘦连衣裙 +吊带</div>
                     <div id="price3" value="265"> ¥ 265 元&nbsp; &nbsp;<span> 3.3折</span></div>
-                     <div id="count3">数量：<span onClick={this.minus2}> - </span> <input id="input3" type="text" value="0"/><sapn onClick={this.add2}> + </sapn> </div>
+                     <div id="count3">数量：<span onClick={this.minus2}> - </span> <input id="input3" type="text" value="0" required/><sapn onClick={this.add2}> + </sapn> </div>
                     <div id="shopping-cart" onClick={this.add2}>加入购物车</div>
                   </div>
                 </div>
@@ -282,13 +281,13 @@
                     <div id="shopping-cart" onClick={this.add3}>加入购物车</div>
                   </div>
                      
-                   <div id="account" onMouseEnter={this.aggregate} onMouseLeave={this.leave}>购物车</div>
-                    <div id="hide"  >
-                      <div id="tex"></div>
+                   <div id="account" onMouseEnter={this.aggregate} onMouseLeave={this.leave} onClick={this.aggregate}>购物车</div>
+                    <div id="hide" onMouseEnter={this.aggregate} onMouseLeave={this.leave}  >
+                      <div id="tex" ></div>
                       <div id="acc"></div>
                     </div>
+        
                   </div>
-                 
               </div>         
         );
          }
@@ -298,6 +297,34 @@
       <Picture/>,
      document.getElementById('content')
 ) ;
+
+// window.onload = function () {
+//     let addButton = document.getElementById("commodity");
+//     acc.addEventListener('click', e => {
+//         e.preventDefault();//preventDefault() 方法阻止元素发生默认的行为（例如，当点击提交按钮时阻止对表单的提交）。
+//         const ListData = getMovieData("commodity");
+//         console.log(tex);
+//         axios.post('http://localhost:3001/list',ListData)
+//             .then(function (response) {
+//                 if (response.data) {
+//                     alert("购买成功！");
+//                 }
+//             })
+//             .catch(function (error) {
+//                 console.log(error);
+//             });
+//     }, false);
+// }
+// function getMovieData(formId) {
+//     const form = document.getElementById(formId);
+//     let tag= form.getElementsByTagName('input');
+//     let ListData = {};
+//     for (let item of tag) {
+//        ListData[item.name] = item.value;
+//     }
+//     return ListData;
+
+// }
 
   </script>
 </head>
